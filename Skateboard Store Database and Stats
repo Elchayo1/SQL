@@ -1,0 +1,48 @@
+--Create a Skateboard Store database
+
+CREATE TABLE skateboard_store (id INTEGER PRIMARY KEY AUTOINCREMENT, brand TEXT, item TEXT, section TEXT, price INTEGER, popularity integer);
+
+INSERT INTO skateboard_store (brand, item, section, price, popularity) VALUES 
+("Baker", "decks", "skateboards", 70.99, 72),
+("Royal", "trucks", "skateboards", 23.99, 95),
+("Spitfire", "wheels", "skateboards", 39.99, 55),
+("Enjoi", "wheels", "skateboards", 29.99, 50),
+("DC", "shoes", "footwear", 75.99, 90),
+("Fallen", "shoes", "footwear", 85.99, 76),
+("Baker", "socks", "footwear", 12.00, 35),
+("Zero", "socks", "footwear", 16.00, 50),
+("Zero", "decks", "skateboards", 64.99, 75),
+("DC", "shirts", "clothing", 35.99, 84),
+("Zero", "shirts", "clothing", 24.99, 91),
+("Spitfire", "hats", "clothing", 27.00, 20),
+("Krux", "trucks", "skateboards", 28.99, 70),
+("Enjoi", "decks", "skateboards", 62.99, 29),
+("Flip", "decks", "skateboards", 54.99, 47);
+
+SELECT * FROM skateboard_store;
+
+--displays the database ordered by price. 
+
+SELECT * FROM skateboard_store
+ORDER BY price DESC; 
+
+--what is the avg price of items in the skateboard section? 
+
+SELECT AVG(price) AS "Skateboard Items Average Price"
+FROM skateboard_store
+WHERE section='skateboards'; 
+
+--what are the most 5 popular items? 
+
+SELECT item, price, popularity
+FROM skateboard_store
+ORDER BY popularity DESC
+LIMIT 5; 
+
+--how many skateboard brands we carry?
+
+SELECT COUNT(brand) AS "Quantity of Skateboard Brands"
+FROM skateboard_store
+WHERE item = "decks"
+
+
