@@ -50,4 +50,4 @@ SELECT COUNT(brand) AS "Quantity of Skateboard Brands"
 FROM skateboard_store
 WHERE item = "decks"
 
-
+/*Based mostly on the website: https://www.skatewarehouse.com*/
