@@ -1,0 +1,49 @@
+/*In this File, I'm using the SQL dialect PostgreSQL to querying a database that is holding Nexflix data to answer questions about the data */ 
+
+Question 1. How many movie titles are there in the database? (movies only, not tv shows) 
+
+SELECT COUNT(*)
+FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info"
+WHERE type = 'Movie';
+
+      Answer: 6131
+
+Question 2. When was the most recent batch of tv shows and/or movies added to the database? 
+
+SELECT MAX(DATE(date_added))
+FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info";
+
+      Answer: 2021-09-25
+
+Question 3. List all the movies and tv shows in alphabetical order. 
+
+SELECT title
+FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info"
+ORDER BY title ASC;
+
+      Answer: List created. Trust me. 😁
+
+#4. Who was the Director for the movie Bright Star? 
+
+SELECT people.director
+FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info" as titles
+LEFT JOIN  "CharlotteChaze/BreakIntoTech"."netflix_people" as people
+ON titles.show_id = people.show_id
+WHERE titles.title = 'Bright Star';
+
+      Answer: Jane Campion
+
+Question 5. What is the oldest movie in the database and what year was it made? 
+
+SELECT title, release_year 
+FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info"
+WHERE type = 'Movie'
+AND release_year <= 
+(SELECT MIN(release_year) 
+FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info"
+WHERE type = 'Movie'); 
+
+      Answer: Prelude to War / 1942
+              The Battle of Midway / 1942
+
+/*Database from: https://bit.io/CharlotteChaze/BreakIntoTech*/
