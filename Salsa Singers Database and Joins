@@ -1,8 +1,12 @@
 /*Create a Database about Famous People. Use Tables and JOINS to relate them.
 Theme: Salsa singers*/
 
-
-CREATE TABLE salsa_singers (id INTEGER PRIMARY KEY AUTOINCREMENT, first_name TEXT, last_name TEXT, birthday TEXT, nationality TEXT, mentor_id INTEGER);
+CREATE TABLE salsa_singers (id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    first_name TEXT, 
+    last_name TEXT, 
+    birthday TEXT, 
+    nationality TEXT, 
+    mentor_id INTEGER);
 
 INSERT INTO salsa_singers (first_name, last_name, birthday, nationality, mentor_id) VALUES ("Victor", "Manuelle", "Sept 27th 1968", "Puerto Rico", 2);
 INSERT INTO salsa_singers (first_name, last_name, birthday, nationality, mentor_id) VALUES ("Gilberto", "Santa Rosa", "Aug 21st 1962", "Puerto Rico", 0);
@@ -15,8 +19,10 @@ INSERT INTO salsa_singers (first_name, last_name, birthday, nationality, mentor_
 INSERT INTO salsa_singers (first_name, last_name, birthday, nationality, mentor_id) VALUES ("Willie", "Chirino", "Apr 5th 1947", "Cuba", 0);
 INSERT INTO salsa_singers (first_name, last_name, birthday, nationality, mentor_id) VALUES ("Oscar", "De Leon", "July 11th 1943", "Venezuela", 9);
 
-
-CREATE TABLE albums (id INTEGER PRIMARY KEY AUTOINCREMENT, singer_id INTEGER, name TEXT, release_year INTEGER);
+CREATE TABLE albums (id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    singer_id INTEGER, 
+    name TEXT, 
+    release_year INTEGER);
 
 INSERT INTO  albums (singer_id, name, release_year) VALUES (1, "Travesia", 2004);
 INSERT INTO  albums (singer_id, name, release_year) VALUES (1, "Busco un Pueblo", 2011);
@@ -39,8 +45,10 @@ INSERT INTO  albums (singer_id, name, release_year) VALUES (9, "Cuba Libre", 199
 INSERT INTO  albums (singer_id, name, release_year) VALUES (10, "Autentico", 1991);
 INSERT INTO  albums (singer_id, name, release_year) VALUES (10, "El Sabor de Oscar", 2016);
 
-
-CREATE TABLE songs (id INTEGER PRIMARY KEY AUTOINCREMENT, singer_id INTEGER, album_id INTEGER, name TEXT);
+CREATE TABLE songs (id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    singer_id INTEGER, 
+    album_id INTEGER, 
+    name TEXT);
 
 INSERT INTO songs (singer_id, album_id, name) VALUES (1, 1, "Amarte Es");
 INSERT INTO songs (singer_id, album_id, name) VALUES (1, 2, "Si Tu Me Besas");
@@ -63,8 +71,9 @@ INSERT INTO songs (singer_id, album_id, name) VALUES (9, 18, "El Manisero");
 INSERT INTO songs (singer_id, album_id, name) VALUES (10, 19, "Detalles");
 INSERT INTO songs (singer_id, album_id, name) VALUES (10, 20, "Esa Mujer");
 
-
-CREATE TABLE collaborations (id INTEGER PRIMARY KEY AUTOINCREMENT, singer1_id INTEGER, singer2_id INTEGER);
+CREATE TABLE collaborations (id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    singer1_id INTEGER, 
+    singer2_id INTEGER);
 
 INSERT INTO collaborations (singer1_id, singer2_id) Values
 (1, 2),
@@ -132,3 +141,4 @@ ON collaborations.singer1_id = main.id
 JOIN salsa_singers as feat
 ON collaborations.singer2_id = feat.id;
 
+/*Based on the website last.fm and Google*/
