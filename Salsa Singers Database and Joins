@@ -1,122 +1,68 @@
-/* Plan: Try to create 5 Tables and use JOINS to relate them.
-Theme: Salsa singers
-
-Ideas:
-
-Table 1 is Singers information: Id, first_name, last_name, Popularity?, birthday, nationality
-
-Table 2 is Top 3 Albums: ID, Singer_id, Name, Release year
-
-Table 3 is few Solo_Songs: ID, Singer_id, album_id, Name,
-
-Table 4 is Songs Feat. X: ID, Singer1_id, singer2_id, Name*/
+/*Create a Database about Famous People. Use Tables and JOINS to relate them.
+Theme: Salsa singers*/
 
 
-CREATE TABLE salsa_singers (id INTEGER PRIMARY KEY AUTOINCREMENT, first_name TEXT, last_name TEXT, birthday TEXT, nationality TEXT, popularity INTEGER);
+CREATE TABLE salsa_singers (id INTEGER PRIMARY KEY AUTOINCREMENT, first_name TEXT, last_name TEXT, birthday TEXT, nationality TEXT, mentor_id INTEGER);
 
-INSERT INTO salsa_singers (first_name, last_name, birthday, nationality, popularity) VALUES ("Victor", "Manuelle", "Sept 27th 1968", "Puerto Rico", 75);
+INSERT INTO salsa_singers (first_name, last_name, birthday, nationality, mentor_id) VALUES ("Victor", "Manuelle", "Sept 27th 1968", "Puerto Rico", 2);
+INSERT INTO salsa_singers (first_name, last_name, birthday, nationality, mentor_id) VALUES ("Gilberto", "Santa Rosa", "Aug 21st 1962", "Puerto Rico", 0);
+INSERT INTO salsa_singers (first_name, last_name, birthday, nationality, mentor_id) VALUES ("Luisito", "Carrion", "Oct 26th 1962", "Puerto Rico", 0);
+INSERT INTO salsa_singers (first_name, last_name, birthday, nationality, mentor_id) VALUES ("Jose", "Alberto", "Dec 22nd 1958", "Dominican Republic", 0);
+INSERT INTO salsa_singers (first_name, last_name, birthday, nationality, mentor_id) VALUES ("Marc", "Anthony", "Sept 16th 1964", "Puerto Rico", 0);
+INSERT INTO salsa_singers (first_name, last_name, birthday, nationality, mentor_id) VALUES ("Linda", "Viera Caballero", "March 9th 1969", "Puerto Rico", 0);
+INSERT INTO salsa_singers (first_name, last_name, birthday, nationality, mentor_id) VALUES ("Tito", "Nieve", "June 4th 1958", "Puerto Rico", 0);
+INSERT INTO salsa_singers (first_name, last_name, birthday, nationality, mentor_id) VALUES ("Luis", "Enrique", "Sept 28th 1962", "Nicaragua", 2);
+INSERT INTO salsa_singers (first_name, last_name, birthday, nationality, mentor_id) VALUES ("Willie", "Chirino", "Apr 5th 1947", "Cuba", 0);
+INSERT INTO salsa_singers (first_name, last_name, birthday, nationality, mentor_id) VALUES ("Oscar", "De Leon", "July 11th 1943", "Venezuela", 9);
 
-INSERT INTO salsa_singers (first_name, last_name, birthday, nationality, popularity) VALUES ("Gilberto", "Santa Rosa", "Aug 21st 1962", "Puerto Rico", 85);
-
-INSERT INTO salsa_singers (first_name, last_name, birthday, nationality, popularity) VALUES ("Luisito", "Carrion", "Oct 26th 1962", "Puerto Rico", 40);
-
-INSERT INTO salsa_singers (first_name, last_name, birthday, nationality, popularity) VALUES ("Jose", "Alberto", "Dec 22nd 1958", "Dominican Republic", 60);
-
-INSERT INTO salsa_singers (first_name, last_name, birthday, nationality, popularity) VALUES ("Marc", "Anthony", "Sept 16th 1964", "Puerto Rico", 90);
-
-INSERT INTO salsa_singers (first_name, last_name, birthday, nationality, popularity) VALUES ("Linda", "Viera Caballero", "March 9th 1969", "Puerto Rico", 75);
-
-INSERT INTO salsa_singers (first_name, last_name, birthday, nationality, popularity) VALUES ("Tito", "Nieve", "June 4th 1958", "Puerto Rico", 65);
-
-INSERT INTO salsa_singers (first_name, last_name, birthday, nationality, popularity) VALUES ("Luis", "Enrique", "Sept 28th 1962", "Nicaragua", 55);
-
-INSERT INTO salsa_singers (first_name, last_name, birthday, nationality, popularity) VALUES ("Willie", "Chirino", "Apr 5th 1947", "Cuba", 70);
-
-INSERT INTO salsa_singers (first_name, last_name, birthday, nationality, popularity) VALUES ("Oscar", "De Leon", "July 11th 1943", "Venezuela", 75);
 
 CREATE TABLE albums (id INTEGER PRIMARY KEY AUTOINCREMENT, singer_id INTEGER, name TEXT, release_year INTEGER);
 
-INSERT INTO  albums (singer_id, name, release_year) VALUES (1, "travesia", 2004);
-
+INSERT INTO  albums (singer_id, name, release_year) VALUES (1, "Travesia", 2004);
 INSERT INTO  albums (singer_id, name, release_year) VALUES (1, "Busco un Pueblo", 2011);
-
 INSERT INTO  albums (singer_id, name, release_year) VALUES (2, "De Cara al Viento", 1994);
-
 INSERT INTO  albums (singer_id, name, release_year) VALUES (2, "Intenso", 2001);
-
 INSERT INTO  albums (singer_id, name, release_year) VALUES (3, "Sin Tu Amor", 2000);
-
 INSERT INTO  albums (singer_id, name, release_year) VALUES (3, "Con Respeto", 1995);
-
 INSERT INTO  albums (singer_id, name, release_year) VALUES (4, "Dance With Me", 1991);
-
 INSERT INTO  albums (singer_id, name, release_year) VALUES (4, "Sueño Contigo", 1988);
-
 INSERT INTO  albums (singer_id, name, release_year) VALUES (5, "Contra la Corriente", 1997);
-
 INSERT INTO  albums (singer_id, name, release_year) VALUES (5, "Iconos", 2010);
-
 INSERT INTO  albums (singer_id, name, release_year) VALUES (6, "Dicen Que Soy", 1994);
-
 INSERT INTO  albums (singer_id, name, release_year) VALUES (6, "Unica", 2010);
-
 INSERT INTO  albums (singer_id, name, release_year) VALUES (7, "Fabricando Fantasias", 2004);
-
 INSERT INTO  albums (singer_id, name, release_year) VALUES (7, "Entre Familia", 2010);
-
 INSERT INTO  albums (singer_id, name, release_year) VALUES (8, "Ciclos", 2009);
-
 INSERT INTO  albums (singer_id, name, release_year) VALUES (8, "Soy y Sere", 2011);
-
 INSERT INTO  albums (singer_id, name, release_year) VALUES (9, "Oxigeno", 1991);
-
 INSERT INTO  albums (singer_id, name, release_year) VALUES (9, "Cuba Libre", 1998);
-
 INSERT INTO  albums (singer_id, name, release_year) VALUES (10, "Autentico", 1991);
-
 INSERT INTO  albums (singer_id, name, release_year) VALUES (10, "El Sabor de Oscar", 2016);
+
 
 CREATE TABLE songs (id INTEGER PRIMARY KEY AUTOINCREMENT, singer_id INTEGER, album_id INTEGER, name TEXT);
 
 INSERT INTO songs (singer_id, album_id, name) VALUES (1, 1, "Amarte Es");
-
 INSERT INTO songs (singer_id, album_id, name) VALUES (1, 2, "Si Tu Me Besas");
-
 INSERT INTO songs (singer_id, album_id, name) VALUES (2, 3, "Te Propongo");
-
 INSERT INTO songs (singer_id, album_id, name) VALUES (2, 4, "Advertencia");
-
 INSERT INTO songs (singer_id, album_id, name) VALUES (3, 5, "Para Ser Real");
-
 INSERT INTO songs (singer_id, album_id, name) VALUES (3, 6, "Modelo de la Noche");
-
 INSERT INTO songs (singer_id, album_id, name) VALUES (4, 7, "Hazme El Amor");
-
 INSERT INTO songs (singer_id, album_id, name) VALUES (4, 8, "Hoy Quiero Confesar");
-
 INSERT INTO songs (singer_id, album_id, name) VALUES (5, 9, "Y Hubo Alguien");
-
 INSERT INTO songs (singer_id, album_id, name) VALUES (5, 10, "Almohada");
-
 INSERT INTO songs (singer_id, album_id, name) VALUES (6, 11, "Ese Hombre");
-
 INSERT INTO songs (singer_id, album_id, name) VALUES (6, 12, "Triste");
-
 INSERT INTO songs (singer_id, album_id, name) VALUES (7, 13, "Fabricando Fantasias");
-
 INSERT INTO songs (singer_id, album_id, name) VALUES (7, 14, "Este Amor De Los Dos");
-
 INSERT INTO songs (singer_id, album_id, name) VALUES (8, 15, "Yo No Se Mañana");
-
 INSERT INTO songs (singer_id, album_id, name) VALUES (8, 16, "Sabes");
-
 INSERT INTO songs (singer_id, album_id, name) VALUES (9, 17, "Via");
-
 INSERT INTO songs (singer_id, album_id, name) VALUES (9, 18, "El Manisero");
-
 INSERT INTO songs (singer_id, album_id, name) VALUES (10, 19, "Detalles");
-
 INSERT INTO songs (singer_id, album_id, name) VALUES (10, 20, "Esa Mujer");
+
 
 CREATE TABLE collaborations (id INTEGER PRIMARY KEY AUTOINCREMENT, singer1_id INTEGER, singer2_id INTEGER);
 
@@ -126,3 +72,63 @@ INSERT INTO collaborations (singer1_id, singer2_id) Values
 (2, 7),
 (5, 6),
 (7, 6);
+
+--Cross Join--
+/*Shows all the data from Singers and Albums matched incorrectly*/
+
+SELECT * FROM salsa_singers, albums;
+
+--Implicit Inner Join--
+/*Shows all the data from Singers and Albums matched correctly*/
+
+SELECT * FROM salsa_singers, albums
+WHERE salsa_singers.id = albums.singer_id;
+
+--Explicit Inner Join--
+/*Best way to show the data from Singers with their Albums*/
+
+SELECT salsa_singers.first_name, salsa_singers.last_name, albums.name as Album
+FROM salsa_singers
+JOIN albums
+ON salsa_singers.id = albums.singer_id;
+
+/*Shows the Album name and corresponding song*/
+
+SELECT albums.name as Album, songs.name as Song 
+FROM albums
+JOIN songs
+ON albums.id = songs.album_id;
+
+/*Shows the Album name and corresponding song relased after 2010*/
+
+SELECT albums.name as Album, songs.name as Song 
+FROM albums
+JOIN songs
+ON albums.id = songs.album_id
+WHERE albums.release_year > 2010;
+
+--SELF Join--
+/*Shows Singers/Mentor name that have matching Mentor*/
+
+SELECT singer.first_name, singer.last_name, mentor.first_name as "Mentor"
+FROM salsa_singers as singer
+JOIN salsa_singers as mentor
+ON singer.mentor_id = mentor.id;
+
+--SELF Outer Join--
+/*Shows Singers even if no Mentor*/
+
+SELECT singer.first_name, singer.last_name, mentor.first_name as "Mentor"
+FROM salsa_singers as singer
+LEFT OUTER JOIN salsa_singers as mentor
+ON singer.mentor_id = mentor.id;
+
+--Multiple Joins--
+/*Shows singers that have made songs together*/
+
+ELECT main.first_name, main.last_name, feat.first_name, feat.last_name FROM collaborations
+JOIN salsa_singers as main
+ON collaborations.singer1_id = main.id
+JOIN salsa_singers as feat
+ON collaborations.singer2_id = feat.id;
+
