@@ -135,7 +135,7 @@ ON singer.mentor_id = mentor.id;
 --Multiple Joins--
 /*Shows singers that have made songs together*/
 
-ELECT main.first_name, main.last_name, feat.first_name, feat.last_name FROM collaborations
+SELECT main.first_name, main.last_name, feat.first_name, feat.last_name FROM collaborations
 JOIN salsa_singers as main
 ON collaborations.singer1_id = main.id
 JOIN salsa_singers as feat
