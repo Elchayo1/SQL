@@ -1,6 +1,11 @@
 --Create a Skateboard Store database
 
-CREATE TABLE skateboard_store (id INTEGER PRIMARY KEY AUTOINCREMENT, brand TEXT, item TEXT, section TEXT, price INTEGER, popularity integer);
+CREATE TABLE skateboard_store (id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    brand TEXT, 
+    item TEXT, 
+    section TEXT, 
+    price INTEGER, 
+    popularity integer);
 
 INSERT INTO skateboard_store (brand, item, section, price, popularity) VALUES 
 ("Baker", "decks", "skateboards", 70.99, 72),
