@@ -1,7 +1,7 @@
 /*Create a database of some fictional characters and their starts
 Theme: Marvel Characters.*/
 
-CREATE TABLE marvel_stats (ID INTEGER PRIMARY KEY,
+CREATE TABLE marvel_stats (id INTEGER PRIMARY KEY,
     name TEXT,
     popularity INTEGER,       /* from 1 - 100 */
     alignment TEXT,
