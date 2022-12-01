@@ -93,4 +93,18 @@ FROM BIT_DB.Spotifydata
 GROUP BY artist_name
 HAVING Average_popularity >= 90;
 
+/*List the tempo of each song, the average tempo by artist, and a label with tempo speed as "Fast", "Medium", or "Slow". */
+
+--Using OVER PARTITION and CASE--
+SELECT artist_name, AVG(tempo) OVER (PARTITION BY artist_name) as "Average_tempo",
+CASE
+    WHEN AVG(tempo) OVER (PARTITION BY artist_name) > 160 THEN "Fast"
+    WHEN AVG(tempo) OVER (PARTITION BY artist_name) < 100 THEN "Slow"
+    ELSE "Midium"
+END as Artist_Avg_Tempo,
+track_name, Tempo
+FROM BIT_DB.Spotifydata
+ORDER BY AVG(tempo) OVER (PARTITION BY artist_name) DESC;
+
 /* Data obtained from: https://www.kaggle.com/datasets/equinxx/spotify-top-50-songs-in-2021?select=spotify_top50_2021.csv */
+
