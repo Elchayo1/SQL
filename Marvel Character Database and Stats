@@ -56,8 +56,7 @@ FROM marvel_stats;
 SELECT COUNT(*) AS "Total characters with MAX strength"
 FROM marvel_stats
 WHERE strength IN(SELECT MAX(strength)
-FROM marvel_stats)
-;
+FROM marvel_stats);
 
 --What is the lowest stength stat and how many characters have it?
 
